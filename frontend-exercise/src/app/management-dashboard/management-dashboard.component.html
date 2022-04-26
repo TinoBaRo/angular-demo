@@ -1,0 +1,79 @@
+
+<section class="vh-100 bg-image"
+style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">User email</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let userdata of userlist; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+        {{userdata.email}}
+    </td>
+    <td>
+        <button class="btn btn-dark" (click)="loadUserDetails(userdata)"> User details </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<div>
+  <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#demo">Add user</button>
+ 
+  <div id="demo" class="collapse">   
+    <!--FORM-->
+    <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+
+      <div class="form-outline mb-4">
+          <input type="email" id="form3Example3cg" class="form-control form-control-lg" formControlName="email" name="email" />
+          
+          <div *ngIf="registerForm.controls['email'].hasError('pattern')">
+              <label class="text-danger" >
+                  Invalid email address. Please enter a valid email address
+              </label>
+          </div> 
+
+          <label class="form-label" for="form3Example3cg">User Email</label>
+      </div>
+
+      <div class="form-outline mb-4">
+          <input type="password" id="form3Example4cg" class="form-control form-control-lg" formControlName='password' name="password" />
+
+          <div *ngIf="registerForm.controls['password'].hasError('pattern')">
+              <label label class="text-danger">Password must have min 8 leters, at least one capitalized letter, at least one letter in small caps, and a number</label>
+          </div>
+
+          <label class="form-label" for="form3Example4cg">Password</label>
+      </div>
+
+      <div class="d-flex justify-content-center">
+          <button type="submit" [disabled]="registerForm.invalid"
+              class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add user</button>
+      </div>
+    </form>
+  </div>
+  
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
